@@ -3,7 +3,8 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import { errorHandler } from './app/middleware/ErrorHandler';
-
+import authRoutes from '../src/app/modules/auth/auth.route';
+import agentApprove from './app/modules/admin/admin.route';
 const app: Application = express();
 
 //morgan logger in development for concise, colored logs
@@ -24,8 +25,8 @@ app.get('/', (_req: Request, res: Response) => {
   res.sendFile(filePath);
 });
 
-// TODO: Add API routes (e.g., user, agent, transactions)
-// app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/account', authRoutes);
+app.use('/api/v1/admin', agentApprove);
 
 // Custom error handling middleware (should be registered after routes)
 app.use(errorHandler);
