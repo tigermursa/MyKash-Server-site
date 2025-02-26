@@ -16,4 +16,10 @@ balanceRequestRoute.post(
   BalanceRequestController.approveBalanceRequest,
 );
 
+//get all pending req
+balanceRequestRoute.get(
+  '/pending',
+  BalanceRequestController.getPendingBalanceRequests,
+);
+
 export default balanceRequestRoute;

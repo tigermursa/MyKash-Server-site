@@ -80,3 +80,9 @@ export const approveBalanceRequest = async (
     throw error;
   }
 };
+
+export const getPendingBalanceRequests = async (): Promise<
+  IBalanceRequestDoc[]
+> => {
+  return await BalanceRequest.find({ status: 'pending' });
+};
