@@ -7,6 +7,7 @@ import authRoutes from '../src/app/modules/auth/auth.route';
 import agentApprove from './app/modules/admin/admin.route';
 import transactionRoute from './app/modules/transaction/transaction.route';
 import cookieParser from 'cookie-parser';
+import balanceRequestRoute from './app/modules/balance-request/balanceRequest.route';
 const app: Application = express();
 
 //morgan logger in development for concise, colored logs
@@ -37,6 +38,7 @@ app.get('/', (_req: Request, res: Response) => {
 app.use('/api/v1/account', authRoutes);
 app.use('/api/v1/admin', agentApprove);
 app.use('/api/v2/transaction', transactionRoute);
+app.use('/api/v2/balance-request', balanceRequestRoute);
 
 // Custom error handling middleware (should be registered after routes)
 app.use(errorHandler);

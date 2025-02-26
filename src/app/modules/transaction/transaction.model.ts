@@ -1,5 +1,4 @@
 // src/models/transaction.model.ts
-
 import mongoose, { Schema, Document } from 'mongoose';
 import { ITransaction } from './transaction.interface';
 
@@ -18,7 +17,7 @@ const TransactionSchema: Schema = new Schema(
     fee: { type: Number, required: true },
     transactionType: {
       type: String,
-      enum: ['sendMoney', 'cashIn', 'cashOut'],
+      enum: ['sendMoney', 'cashIn', 'cashOut', 'balanceRequest'],
       required: true,
     },
   },
