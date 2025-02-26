@@ -6,6 +6,7 @@ import { errorHandler } from './app/middleware/ErrorHandler';
 import authRoutes from '../src/app/modules/auth/auth.route';
 import agentApprove from './app/modules/admin/admin.route';
 import transactionRoute from './app/modules/transaction/transaction.route';
+import cookieParser from 'cookie-parser';
 const app: Application = express();
 
 //morgan logger in development for concise, colored logs
@@ -14,7 +15,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //  CORS for all origins
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:5173'],
+    credentials: true,
+  }),
+);
+
+app.use(cookieParser());
 
 // Parsers for JSON and URL-encoded data
 app.use(express.json());
