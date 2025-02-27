@@ -1,27 +1,17 @@
 import { Router } from 'express';
-import { approveAgent } from './admin.controller';
 import * as AdminController from './admin.controller';
+import { authenticate } from '../../middleware/authMiddleware';
 
-const agentApprove = Router();
+const adminRoute = Router();
 
-agentApprove.put('/approve-agent/:id', approveAgent);
+adminRoute.use(authenticate);
 
-// Endpoint to get all users (excluding admins)
-agentApprove.get('/users', AdminController.getAllUsers);
+adminRoute.put('/approve-agent/:id', AdminController.approveAgent);
+adminRoute.get('/users', AdminController.getAllUsers);
+adminRoute.get('/user/:userID', AdminController.getUser);
+adminRoute.get('/total-balance', AdminController.getTotalBalance);
+adminRoute.get('/total-balance/user', AdminController.getTotalUserBalance);
+adminRoute.get('/total-balance/agent', AdminController.getTotalAgentBalance);
+adminRoute.get('/history/:userID', AdminController.getHistory);
 
-// Endpoint to get a single user by custom userID
-agentApprove.get('/user/:userID', AdminController.getUser);
-
-// Endpoint to get total balance (users + agents)
-agentApprove.get('/total-balance', AdminController.getTotalBalance);
-
-// Endpoint to get total balance for users only
-agentApprove.get('/total-balance/user', AdminController.getTotalUserBalance);
-
-// Endpoint to get total balance for agents only
-agentApprove.get('/total-balance/agent', AdminController.getTotalAgentBalance);
-
-// Endpoint to get transaction history for a specific user
-agentApprove.get('/history/:userID', AdminController.getHistory);
-
-export default agentApprove;
+export default adminRoute;

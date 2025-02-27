@@ -1,22 +1,19 @@
-// src/routes/balanceRequest.route.ts
 import { Router } from 'express';
 import * as BalanceRequestController from './balanceRequest.controller';
+import { authenticate } from '../../middleware/authMiddleware';
 
 const balanceRequestRoute = Router();
 
-// Endpoint to create a balance recharge request (user)
+balanceRequestRoute.use(authenticate);
+
 balanceRequestRoute.post(
   '/create',
   BalanceRequestController.createBalanceRequest,
 );
-
-// Endpoint to approve a balance recharge request (admin)
 balanceRequestRoute.post(
   '/approve',
   BalanceRequestController.approveBalanceRequest,
 );
-
-//get all pending req
 balanceRequestRoute.get(
   '/pending',
   BalanceRequestController.getPendingBalanceRequests,
