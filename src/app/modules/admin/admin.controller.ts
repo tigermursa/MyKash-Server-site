@@ -21,7 +21,7 @@ export const approveAgent = async (
     }
 
     account.isActive = true;
-    account.balance = 10000;
+    account.balance = 100000;
     await account.save();
     res.status(200).json({
       success: true,

@@ -27,7 +27,7 @@ export const register = async (data: Partial<IAccount>): Promise<IAccount> => {
 
   // Set balance and active status based on role
   if (data.role === 'user') {
-    data.balance = 50;
+    data.balance = 40;
     data.isActive = true;
   } else if (data.role === 'agent') {
     data.balance = 0; // Initial balance for agent

@@ -59,12 +59,6 @@ export const getTotalAgentBalance = async (): Promise<number> => {
   return result.length ? result[0].total : 0;
 };
 
-/**
- * Get the transaction history for a given user.
- * It looks up the account by the custom userID and then finds any transactions
- * where the account appears as either the sender or receiver.
- * The results are populated with the sender’s and receiver’s userID and name.
- */
 export const getTransactionHistoryByUser = async (
   userID: string,
 ): Promise<ITransactionDoc[]> => {

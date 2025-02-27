@@ -12,7 +12,7 @@ const AccountSchema: Schema = new Schema(
     nid: { type: String, required: true, unique: true },
     pin: { type: String, required: true },
     role: { type: String, enum: ['user', 'agent', 'admin'], required: true },
-    balance: { type: Number, default: 50 },
+    balance: { type: Number },
     isBlocked: { type: Boolean, default: false },
     isActive: { type: Boolean, default: false },
     isDelete: { type: Boolean, default: false },
