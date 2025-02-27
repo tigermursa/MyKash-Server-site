@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 //  CORS for all origins
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'https://mykash.vercel.app'],
     credentials: true,
   }),
 );

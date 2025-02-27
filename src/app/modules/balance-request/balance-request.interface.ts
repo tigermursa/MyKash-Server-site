@@ -1,4 +1,3 @@
-// src/interfaces/balance-request.interface.ts
 export type BalanceRequestStatus = 'pending' | 'approved' | 'rejected';
 
 export interface IBalanceRequest {

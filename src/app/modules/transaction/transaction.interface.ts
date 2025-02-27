@@ -1,4 +1,3 @@
-// src/interfaces/transaction.interface.ts
 export type TransactionType =
   | 'sendMoney'
   | 'cashIn'

@@ -1,4 +1,3 @@
-// src/models/balance-request.model.ts
 import mongoose, { Schema, Document } from 'mongoose';
 import { IBalanceRequest } from './balance-request.interface';
 
