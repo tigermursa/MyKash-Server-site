@@ -13,5 +13,5 @@ adminRoute.get('/total-balance', AdminController.getTotalBalance);
 adminRoute.get('/total-balance/user', AdminController.getTotalUserBalance);
 adminRoute.get('/total-balance/agent', AdminController.getTotalAgentBalance);
 adminRoute.get('/history/:userID', AdminController.getHistory);
-
+adminRoute.put('/block-user/:userID', AdminController.toggleBlockUser);
 export default adminRoute;

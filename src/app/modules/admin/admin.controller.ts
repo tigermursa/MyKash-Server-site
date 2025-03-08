@@ -115,3 +115,26 @@ export const getHistory = async (
     res.status(400).json({ success: false, message: error.message });
   }
 };
+
+export const toggleBlockUser = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  try {
+    const { userID } = req.params;
+    const user = await AdminService.toggleUserBlockStatus(userID);
+
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `User ${user.userID} has been ${user.isBlocked ? 'blocked' : 'unblocked'}.`,
+      data: user,
+    });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

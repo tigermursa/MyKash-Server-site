@@ -1,4 +1,4 @@
-import Account from '../account/account.model';
+import Account, { IAccountDoc } from '../account/account.model';
 import Transaction from '../transaction/transaction.model';
 import { ITransactionDoc } from '../transaction/transaction.model';
 
@@ -74,4 +74,16 @@ export const getTransactionHistoryByUser = async (
     .populate('toAccount', 'userID name')
     .sort({ createdAt: -1 });
   return transactions;
+};
+
+export const toggleUserBlockStatus = async (
+  userID: string,
+): Promise<IAccountDoc | null> => {
+  const user = await Account.findOne({ userID });
+  if (!user) {
+    return null;
+  }
+  user.isBlocked = !user.isBlocked;
+  await user.save();
+  return user;
 };
